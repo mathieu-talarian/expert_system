@@ -1,12 +1,10 @@
 NAME=expert_system
-SRC_PATH=.
+SRC_PATH=src
 GO=go
 BUILD=build
 DEBUG=debug
 
-SRC_NAME=main.go \
-flags.go \
-parser.go 
+SRC_NAME=main.go 
 
 all: $(NAME)
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))

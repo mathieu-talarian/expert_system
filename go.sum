@@ -1,12 +1,7 @@
-github.com/google/pprof v0.0.0-20190109223431-e84dfd68c163 h1:beB+Da4k9B1zmgag78k3k1Bx4L/fdWr5FwNa0f8RxmY=
-github.com/google/pprof v0.0.0-20190109223431-e84dfd68c163/go.mod h1:zfwlbNMJ+OItoe0UupaVj+oy1omPYYDuagoSzA8v9mc=
-github.com/ianlancetaylor/demangle v0.0.0-20181102032728-5e5cf60278f6 h1:UDMh68UUwekSh5iP2OMhRRZJiiBccgV7axzUG8vi56c=
-github.com/ianlancetaylor/demangle v0.0.0-20181102032728-5e5cf60278f6/go.mod h1:aSSvb/t6k1mPoxDqO4vJh6VOCGPwU4O0C2/Eqndh1Sc=
-golang.org/x/arch v0.0.0-20181203225421-5a4828bb7045 h1:Pn8fQdvx+z1avAi7fdM2kRYWQNxGlavNDSyzrQg2SsU=
-golang.org/x/arch v0.0.0-20181203225421-5a4828bb7045/go.mod h1:cYlCBUl1MsqxdiKgmc4uh7TxZfWSFLOGSRR090WDxt8=
-golang.org/x/crypto v0.0.0-20190103213133-ff983b9c42bc h1:F5tKCVGp+MUAHhKp5MZtGqAlGX3+oCsiL1Q629FL90M=
-golang.org/x/crypto v0.0.0-20190103213133-ff983b9c42bc/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
-golang.org/x/sys v0.0.0-20190114130336-2be517255631 h1:g/5trXm6f9Tm+ochb21RlFNnF63lt+elB9hVBqtPu5Y=
-golang.org/x/sys v0.0.0-20190114130336-2be517255631/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
+github.com/mathmoul/expert_system v0.0.0-20190116004728-7bfc7940e784 h1:cCPpjM6KtQbaqzmQUKV4HIHGYCZIYgDegh3Y6hfk34A=
+github.com/stamblerre/gocode v0.0.0-20181212030458-2f9d39d8f31d h1:Bpu5DolLksGPpggDvoP5l9aruCElc6a47pHOSWwL74A=
+github.com/stamblerre/gocode v0.0.0-20181212030458-2f9d39d8f31d/go.mod h1:EM2T8YDoTCvGXbEpFHxarbpv7VE26QD1++Cb1Pbh7Gs=
+golang.org/x/tools v0.0.0-20190116202437-c3e156772774 h1:gnaw9jaFth87LwyYcTNau0+SE5qRONakq6oGh6WMSZI=
+golang.org/x/tools v0.0.0-20190116202437-c3e156772774/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
 gopkg.in/oleiade/lane.v1 v1.0.0 h1:Xs7/GTdnZNGuuXV7z8gTrHoHEeHdCnhuNXm4n0UpxjY=
 gopkg.in/oleiade/lane.v1 v1.0.0/go.mod h1:e9mCiNjxfTGlkjxn/TPK3JUwhjKjby5cjXuGotH/QlE=

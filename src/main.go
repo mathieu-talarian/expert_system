@@ -3,6 +3,9 @@ package main
 import (
 	"log"
 	"os"
+
+	"github.com/mathmoul/expert_system/src/flags"
+	"github.com/mathmoul/expert_system/src/parser"
 )
 
 var color = map[string]string{
@@ -20,19 +23,19 @@ func printError(v interface{}) {
 }
 
 func main() {
-	parseFlags()
-	if debugF() {
+	flags.ParseFlags()
+	if flags.DebugF() {
 		printError("Debug on")
 	}
-	if len(argsF()) == 0 {
+	if len(flags.Args) == 0 {
 		log.Fatal("Not enough arguments")
-	} else if (len(argsF())) == 2 {
+	} else if (len(flags.Args)) == 2 {
 		printError("Too much arguments")
 	}
 	// open File
-	file, err := os.Open(argsF()[0])
+	file, err := os.Open(flags.Args[0])
 	if err != nil {
 		printError(err)
 	}
-	parseFile(file)
+	parser.ParseFile(file)
 }
