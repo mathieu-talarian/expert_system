@@ -45,11 +45,12 @@ func splitIntoTokens() *TokenInfos {
 	}
 }
 
-func (t *TokenTypes) print() {
+func (t *TokenTypes) print() *TokenTypes {
 
 	for _, v := range *t {
 		fmt.Println(*v.Content, v.Type)
 	}
+	return t
 }
 
 func (t *TokenInfos) split(str *string) (tt *TokenTypes) {

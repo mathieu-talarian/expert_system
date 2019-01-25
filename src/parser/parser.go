@@ -11,9 +11,10 @@ import (
 type Parser struct {
 	index int
 
+	*ParseResult
 	// rules ParseResult
-	token map[string]string
-	stack *lane.Deque
+	tokens *TokenTypes
+	stack  *lane.Deque
 }
 
 func fileToString(file *os.File) (str string) {
@@ -26,5 +27,16 @@ func fileToString(file *os.File) (str string) {
 // ParseFile func
 func ParseFile(file *os.File) {
 	toParse := fileToString(file)
-	splitIntoTokens().split(&toParse).print()
+	entities := splitIntoTokens().split(&toParse).print()
+	*entities = append(*entities, &TokenType{EndLine, func() (s *string) {
+		*s = "\n"
+		return
+	}()})
+	parser := &Parser{
+		index:       0,
+		ParseResult: NewParseResult(),
+		tokens:      entities,
+		stack:       lane.NewDeque(),
+	}
+	carryOn := true
 }
