@@ -65,9 +65,21 @@ func (p *Parser) RuleValue() (b bool) {
 	return
 }
 
+func (p *Parser) RuleAnd() (b bool) {
+	state := p.SaveState()
+	if b = p.TokenIsType((*p.TokenInfos)[And].Regex) && p.RuleValue(); b {
+		//p.Stack.PushLeft()p.PopStackTwo()
+	}
+	return
+}
+
 func (p *Parser) RuleExpression() (b bool) {
 	p.SaveState()
 	b = p.RuleValue()
+	carryOn := b
+	for carryOn {
+		carryOn = p.RuleAnd()
+	}
 	return
 }
 
@@ -116,6 +128,7 @@ func (p *Parser) Process() {
 		carryOn = p.RuleEmptyLine() ||
 			p.RuleInstruction() ||
 			p.RuleInitialFacts()
+
 	}
 	fmt.Println(p.ParseResult)
 }
