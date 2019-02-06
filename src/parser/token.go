@@ -45,16 +45,25 @@ func splitIntoTokens() *TokenInfos {
 	}
 }
 
-func (t *TokenTypes) print() *TokenTypes {
+func (t *TokenInfo) Match(s string) bool {
+	return t.Regex.MatchString(s)
+}
 
+func (t *TokenTypes) print() {
 	for _, v := range *t {
 		fmt.Println(*v.Content, v.Type)
 	}
-	return t
+}
+
+func (t *TokenTypes) appendEndline() {
+	*t = append(*t, &TokenType{EndLine, func() *string {
+		s := "\n"
+		return &s
+	}()})
 }
 
 func (t *TokenInfos) split(str *string) (tt *TokenTypes) {
-	var e = []*TokenType{}
+	var e []*TokenType
 	for len(*str) > 0 {
 		if (*str)[0] != '\n' {
 			*str = strings.TrimSpace(*str)
@@ -71,4 +80,8 @@ func (t *TokenInfos) matchToken(str *string) *TokenType {
 		}
 	}
 	return nil
+}
+
+func (t TokenTypes) Len() int {
+	return len(t)
 }

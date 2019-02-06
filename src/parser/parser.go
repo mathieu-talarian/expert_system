@@ -2,19 +2,34 @@ package parser
 
 import (
 	"bytes"
+	"fmt"
+	"log"
 	"os"
 
-	lane "gopkg.in/oleiade/lane.v1"
+	"gopkg.in/karalabe/cookiejar.v1/collections/deque"
 )
 
 // Parser struct
 type Parser struct {
-	index int
+	Index  int
+	Tokens *TokenTypes
+	Stack  *deque.Deque
 
 	*ParseResult
-	// rules ParseResult
-	tokens *TokenTypes
-	stack  *lane.Deque
+	*TokenInfos
+	// Save old state on parser if i have to process further
+	oldState *int
+}
+
+func NewParser(index int, p *ParseResult, t *TokenTypes, s *deque.Deque) *Parser {
+	return &Parser{
+		Index:       index,
+		ParseResult: p,
+		Tokens:      t,
+		Stack:       s,
+		TokenInfos:  splitIntoTokens(),
+		oldState:    nil,
+	}
 }
 
 func fileToString(file *os.File) (str string) {
@@ -24,19 +39,25 @@ func fileToString(file *os.File) (str string) {
 	return buf.String()
 }
 
-// ParseFile func
-func ParseFile(file *os.File) {
-	toParse := fileToString(file)
-	entities := splitIntoTokens().split(&toParse).print()
-	*entities = append(*entities, &TokenType{EndLine, func() (s *string) {
-		*s = "\n"
-		return
-	}()})
-	parser := &Parser{
-		index:       0,
-		ParseResult: NewParseResult(),
-		tokens:      entities,
-		stack:       lane.NewDeque(),
+func (t *TokenTypes) SearchForUnknown() error {
+	for _, v := range *t {
+		if v.Type == Unknown {
+			return fmt.Errorf("issue, unknown character %s", *v.Content)
+		}
 	}
-	carryOn := true
+	return nil
+}
+
+// ParseFile func
+func ParseFile(file *os.File) error {
+	toParse := fileToString(file)
+	entities := splitIntoTokens().split(&toParse)
+	entities.print()
+	if err := entities.SearchForUnknown(); err != nil {
+		log.Fatal(err)
+	}
+	entities.appendEndline()
+	parser := NewParser(0, NewParseResult(), entities, deque.New())
+	parser.Process()
+	return nil
 }

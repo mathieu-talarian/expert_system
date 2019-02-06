@@ -37,5 +37,7 @@ func main() {
 	if err != nil {
 		printError(err)
 	}
-	parser.ParseFile(file)
+	if err := parser.ParseFile(file); err != nil {
+		printError(err)
+	}
 }

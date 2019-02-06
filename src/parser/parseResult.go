@@ -3,14 +3,15 @@ package parser
 type ParseResult struct {
 	InitialFacts []Set
 	Query        []*string
+	Instructions []map[string]interface{}
 }
 
 // implementation parse result
-
 func NewParseResult() *ParseResult {
 	return &ParseResult{
-		[]Set{},
-		[]*string{},
+		InitialFacts: []Set{},
+		Query:        []*string{},
+		Instructions: []map[string]interface{}{},
 	}
 }
 
