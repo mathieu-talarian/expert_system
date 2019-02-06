@@ -111,7 +111,7 @@ func (p *Parser) RuleInitialFacts() (b bool) {
 		} else {
 			log.Fatal("Issue Rule Initial Facts")
 		}
-		p.Index ++
+		p.Index++
 		token = (*p.Tokens)[p.Index-1].Type
 	}
 	p.TokenIsType((*p.TokenInfos)[Comment].Regex)
