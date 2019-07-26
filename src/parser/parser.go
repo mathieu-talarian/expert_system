@@ -1,63 +1,38 @@
 package parser
 
 import (
-	"bytes"
 	"fmt"
-	"log"
-	"os"
-
-	"gopkg.in/karalabe/cookiejar.v1/collections/deque"
+	"strings"
 )
 
-// Parser struct
-type Parser struct {
-	Index  int
-	Tokens *TokenTypes
-	Stack  *deque.Deque
-
-	*ParseResult
-	*TokenInfos
-	// Save old state on parser if i have to process further
-	oldState *int
-}
-
-func NewParser(index int, p *ParseResult, t *TokenTypes, s *deque.Deque) *Parser {
-	return &Parser{
-		Index:       index,
-		ParseResult: p,
-		Tokens:      t,
-		Stack:       s,
-		TokenInfos:  splitIntoTokens(),
-		oldState:    nil,
-	}
-}
-
-func fileToString(file *os.File) (str string) {
-	buf := bytes.NewBuffer(nil)
-	buf.ReadFrom(file)
-	file.Close()
-	return buf.String()
-}
-
-func (t *TokenTypes) SearchForUnknown() error {
-	for _, v := range *t {
-		if v.Type == Unknown {
-			return fmt.Errorf("issue, unknown character %s", *v.Content)
+func removeEmptyFields(slice []string) (result []string) {
+	for _, v := range slice {
+		if v != "" {
+			result = append(result, v)
 		}
 	}
-	return nil
+	return
 }
 
-// ParseFile func
-func ParseFile(file *os.File) error {
-	toParse := fileToString(file)
-	entities := splitIntoTokens().split(&toParse)
-	entities.print()
-	if err := entities.SearchForUnknown(); err != nil {
-		log.Fatal(err)
+func removeCommentedLine(slice []string) (result []string) {
+	for _, v := range slice {
+		if v != "#" {
+			result = append(result, v)
+		}
 	}
-	entities.appendEndline()
-	parser := NewParser(0, NewParseResult(), entities, deque.New())
-	parser.Process()
-	return nil
+	return slice
+}
+
+// Start parsing opened file
+func Start(openedFileToString string) (ret *interface{}, err error) {
+	trimmed := strings.TrimSpace(openedFileToString)
+
+	split := strings.Split(trimmed, "\n")
+
+	split = append(removeEmptyFields(split))
+	split = append(removeCommentedLine(split))
+	for _, v := range split {
+		fmt.Println(string(v[0]))
+	}
+	return nil, nil
 }

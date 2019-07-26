@@ -1,9 +1,7 @@
-github.com/mathmoul/expert_system v0.0.0-20190116004728-7bfc7940e784 h1:cCPpjM6KtQbaqzmQUKV4HIHGYCZIYgDegh3Y6hfk34A=
-github.com/stamblerre/gocode v0.0.0-20181212030458-2f9d39d8f31d h1:Bpu5DolLksGPpggDvoP5l9aruCElc6a47pHOSWwL74A=
+github.com/mathmoul/expert_system v0.0.0-20190206235656-ca0ca015517d h1:PZnPYPVG1JuAnvI+XqjKYpPQUpgw5QjQXk3BFyps4Rk=
+github.com/mathmoul/expert_system v0.0.0-20190206235656-ca0ca015517d/go.mod h1:2KY65F/z6nMBFJglo/jg2q7LBKom9TiTRFTBgP5f7ow=
 github.com/stamblerre/gocode v0.0.0-20181212030458-2f9d39d8f31d/go.mod h1:EM2T8YDoTCvGXbEpFHxarbpv7VE26QD1++Cb1Pbh7Gs=
-golang.org/x/tools v0.0.0-20190116202437-c3e156772774 h1:gnaw9jaFth87LwyYcTNau0+SE5qRONakq6oGh6WMSZI=
 golang.org/x/tools v0.0.0-20190116202437-c3e156772774/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
 gopkg.in/karalabe/cookiejar.v1 v1.0.0-20141109175019-e1490cae028c h1:4GYkPhjcYLPrPAnoxHVQlH/xcXtWN8pEgqBnHrPAs8c=
 gopkg.in/karalabe/cookiejar.v1 v1.0.0-20141109175019-e1490cae028c/go.mod h1:xd7qpr5uPMNy4hsRJ5JEBXA8tJjTFmUI1soCjlCIgAE=
-gopkg.in/oleiade/lane.v1 v1.0.0 h1:Xs7/GTdnZNGuuXV7z8gTrHoHEeHdCnhuNXm4n0UpxjY=
 gopkg.in/oleiade/lane.v1 v1.0.0/go.mod h1:e9mCiNjxfTGlkjxn/TPK3JUwhjKjby5cjXuGotH/QlE=

@@ -16,12 +16,16 @@ M = $(shell printf "\033[34;1m▶\033[0m")
 export GO111MODULE=on
 
 
+.PHONY: run
+run: all
+	./$(PACKAGE) $(shell pwd)/input/ex1.es
+
 .PHONY: all
 all: fmt lint $(BIN) ; $(info $(M) building executable…) @ ## Build program binary
 	$Q $(GO) build \
 		-tags release \
 		-ldflags '-X $(PACKAGE)/cmd.Version=$(VERSION) -X $(PACKAGE)/cmd.BuildDate=$(DATE)' \
-		-o $(BIN)/$(PACKAGE) main.go
+		-o $(BIN)/$(PACKAGE) src/main.go
 
 # Tools
 
